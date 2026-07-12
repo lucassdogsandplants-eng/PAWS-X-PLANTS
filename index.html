@@ -213,6 +213,18 @@ section{padding:74px 0}
 .rev .av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:900;background:var(--leaf-deep)}
 .rev .who small{display:block;color:var(--ink-soft);font-weight:700}
 
+/* ---------- faq ---------- */
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq{background:#fff;border-radius:16px;box-shadow:var(--shadow);border-left:5px solid var(--leaf);overflow:hidden}
+.faq-q{width:100%;cursor:pointer;text-align:left;background:none;border:none;font-family:inherit;padding:18px 22px;font-weight:900;color:var(--ink);font-size:1.05rem;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-q::after{content:"+";color:var(--leaf-deep);font-size:1.5rem;font-weight:900;transition:transform .5s cubic-bezier(.22,.61,.36,1);flex-shrink:0}
+.faq.open .faq-q::after{transform:rotate(45deg)}
+.faq-body{max-height:0;overflow:hidden;opacity:0;transition:max-height .75s cubic-bezier(.22,.61,.36,1),opacity .7s ease .1s}
+.faq.open .faq-body{max-height:200px;opacity:1}
+.faq-body p{transform:translateY(-8px);transition:transform .75s cubic-bezier(.22,.61,.36,1)}
+.faq.open .faq-body p{transform:none}
+.faq p{padding:0 22px 20px;color:var(--ink-soft);margin:0;line-height:1.6}
+
 /* ---------- contact ---------- */
 .contact-card{
   background:#fff;border-radius:26px;box-shadow:var(--shadow);overflow:hidden;
@@ -302,6 +314,7 @@ footer .em{color:var(--sun);font-weight:900}
       <a href="#services">Services</a>
       <a href="#how">How it works</a>
       <a href="#area">Prices &amp; area</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact" class="nav-cta">Book me</a>
     </nav>
     <button class="burger" id="burger" aria-label="Menu">☰</button>
@@ -315,8 +328,8 @@ footer .em{color:var(--sun);font-weight:900}
   <div class="wrap hero-grid">
     <div>
       <span class="pill" style="text-transform:uppercase;letter-spacing:.04em">🌞 Full-time all summer · only on weekends from September</span>
-      <h1>Dog walks &amp; plant watering, <span class="hl">done by a friendly local</span></h1>
-      <p class="lead">Hi, I'm Lucas — a 14-year-old and your neighbour in Clapham. I walk dogs and keep your plants watered so you don't have to worry. Reliable and just around the corner — book me for a one-off or a regular slot.</p>
+      <h1>Dog walks, plant watering &amp; holiday home checks, <span class="hl">done by a friendly local</span></h1>
+      <p class="lead">Hi, I'm Lucas — a 14-year-old and your neighbour in Clapham. I walk dogs, feed pets, water plants and keep your home looking lived-in while you're away. Reliable, just around the corner, and always the same face. Book me for a one-off or a regular slot.</p>
       <div class="hero-actions">
         <button class="btn btn-primary" onclick="scrollToId('contact')">📅 Book a slot</button>
         <button class="btn btn-ghost" onclick="scrollToId('services')">See what I do</button>
@@ -350,8 +363,8 @@ footer .em{color:var(--sun);font-weight:900}
 <section id="services">
   <div class="wrap">
     <span class="eyebrow">What I offer</span>
-    <h2 class="sec-title">Two things, done properly</h2>
-    <p class="sec-sub">I keep it simple so I can do it well: happy dogs and healthy plants. Pick what you need — mix and match anytime.</p>
+    <h2 class="sec-title">Done properly, or not at all</h2>
+    <p class="sec-sub">I keep my services simple so I can do each one well: happy dogs, fed pets, healthy plants and a home that looks lived-in. Pick what you need — mix and match anytime.</p>
     <div class="svc-grid">
       <div class="svc pet reveal">
         <div class="svc-ic">🐾</div>
@@ -360,7 +373,7 @@ footer .em{color:var(--sun);font-weight:900}
         <ul>
           <li>30, 60 or 90-minute walks — as long as you like</li>
           <li>Solo walks — your dog, my full attention</li>
-          <li>Poo bags and a spare leash always provided</li>
+          <li>Poo bags and a spare lead always provided</li>
           <li>Rainy day? Paws towel-dried before your dog heads back inside</li>
           <li>Feeding &amp; drop-in visits while you're out</li>
           <li>Photo update sent after every visit</li>
@@ -402,6 +415,37 @@ footer .em{color:var(--sun);font-weight:900}
       <div class="step reveal d1"><div class="num">2</div><h3>Free meet &amp; greet</h3><p>A quick 5-minute doorstep hello — you and your dog meet me, and we look at the garden together. No obligation.</p></div>
       <div class="step reveal d2"><div class="num">3</div><h3>We pick a time</h3><p>I confirm a slot and a clear price — no surprises.</p></div>
       <div class="step reveal d3"><div class="num">4</div><h3>Simple, fair payment</h3><p>One-off jobs: pay cash or bank transfer after. Holiday or multi-week bookings: half up front, half when I'm done — fair on both of us.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <span class="eyebrow">Good to know</span>
+    <h2 class="sec-title">Questions dog owners ask</h2>
+    <p class="sec-sub">The honest answers to the things people wonder before they book.</p>
+    <div class="faq-list">
+      <div class="faq reveal">
+        <button type="button" class="faq-q">What happens if the weather's bad?</button>
+        <div class="faq-body"><p>I walk rain or shine — paws towel-dried before your dog heads back inside. If the weather turns genuinely nasty, I'll message you and we'll rearrange, no charge.</p></div>
+      </div>
+      <div class="faq reveal">
+        <button type="button" class="faq-q">What if my dog seems unwell on a walk?</button>
+        <div class="faq-body"><p>I stop the walk and call you straight away, so we can decide together what's best. I always carry your number on every walk.</p></div>
+      </div>
+      <div class="faq reveal">
+        <button type="button" class="faq-q">Can I cancel?</button>
+        <div class="faq-body"><p>Of course — free with 24 hours' notice. Life happens.</p></div>
+      </div>
+      <div class="faq reveal">
+        <button type="button" class="faq-q">Are your parents involved?</button>
+        <div class="faq-body"><p>Yes — one of them comes to every first meet &amp; greet, they know every booking I take, and they're always reachable. You're dealing with me, backed by them.</p></div>
+      </div>
+      <div class="faq reveal">
+        <button type="button" class="faq-q">Do you walk dogs off the lead?</button>
+        <div class="faq-body"><p>No — every dog stays on the lead, every time. It's the safest way, and it's non-negotiable.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -568,6 +612,7 @@ footer .em{color:var(--sun);font-weight:900}
       <a href="#services">Services</a>
       <a href="#how">How it works</a>
       <a href="#area">Prices &amp; area</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">Book me</a>
     </div>
     <p style="margin-bottom:14px">📧 <a href="mailto:lucassdogsandplants@gmail.com" class="em">lucassdogsandplants@gmail.com</a> &nbsp;·&nbsp; 💬 <a href="https://wa.me/447568403003" class="em" target="_blank" rel="noopener">Message me on WhatsApp</a></p>
@@ -580,11 +625,18 @@ footer .em{color:var(--sun);font-weight:900}
 
 <script>
 /* auto-reveal section headers */
-document.querySelectorAll('#services,#how,#area,#contact').forEach(function(sec){
+document.querySelectorAll('#services,#how,#area,#faq,#contact').forEach(function(sec){
   var eb=sec.querySelector('.eyebrow'), ti=sec.querySelector('.sec-title'), su=sec.querySelector('.sec-sub');
   if(eb) eb.classList.add('reveal');
   if(ti) ti.classList.add('reveal','d1');
   if(su) su.classList.add('reveal','d2');
+});
+
+/* smooth FAQ accordion */
+document.querySelectorAll('.faq .faq-q').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    btn.closest('.faq').classList.toggle('open');
+  });
 });
 
 /* reveal on scroll */
