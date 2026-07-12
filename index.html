@@ -161,7 +161,8 @@ section{padding:74px 0}
 .band .sec-title,.band .eyebrow{color:#fff}
 .band .eyebrow{opacity:.85}
 .band .sec-sub{color:rgba(255,255,255,.9)}
-.area-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center}
+.area-grid{display:flex;flex-direction:column;gap:26px}
+.area-grid .contact-side{padding:32px;box-shadow:var(--shadow)}
 .area-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
 .area-list span{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:8px 14px;border-radius:30px;font-weight:700;font-size:.9rem}
 .map-card{background:#fff;border-radius:18px;padding:12px;box-shadow:var(--shadow)}
@@ -229,7 +230,8 @@ section{padding:74px 0}
 .contact-left p{color:var(--ink-soft);margin-bottom:22px}
 .wa-inline{color:var(--leaf-deep);font-weight:800;text-decoration:underline}
 /* booking form */
-.booking-form{display:flex;flex-direction:column;gap:14px}
+.booking-form{display:flex;flex-direction:column;gap:14px;flex:1}
+.booking-form .ff-submit{margin-top:auto}
 .ff-row{display:flex;flex-direction:column}
 .ff-row label{font-weight:800;font-size:.85rem;color:var(--ink);margin-bottom:6px}
 .booking-form input,.booking-form select,.booking-form textarea{
@@ -285,6 +287,8 @@ section{padding:74px 0}
 .mail-open{display:inline-block;margin-top:6px;font-weight:800;color:var(--leaf-deep);text-decoration:underline}
 .contact-privacy{font-size:.82rem;color:var(--ink-soft);background:#eafaee;border-radius:12px;padding:12px 14px;margin-bottom:0;margin-top:4px;line-height:1.5}
 .contact-right{padding:40px}
+.calc-in-contact{padding:24px;background:linear-gradient(160deg,#f3faf4,#e6f4e9);display:flex;align-items:stretch}
+.calc-in-contact .calc{width:100%;box-shadow:0 10px 26px rgba(18,122,37,.12);display:flex;flex-direction:column}
 .contact-side{background:linear-gradient(160deg,#eafaee,#d8f3e0)}
 .side-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:2px solid var(--leaf);color:var(--leaf-deep);font-weight:800;font-size:.82rem;padding:7px 14px;border-radius:30px;margin-bottom:16px}
 .contact-side h3{color:var(--leaf-deep);font-size:1.35rem;margin-bottom:8px}
@@ -403,7 +407,6 @@ footer .em{color:var(--sun);font-weight:900}
           <li>Feeding &amp; drop-in visits while you're out</li>
           <li>Photo update sent after every visit</li>
         </ul>
-        <p class="svc-note">🔑 <b>Need me to let myself in?</b> We always meet face-to-face first, so a key only ever changes hands once you're comfortable. Any key you leave is kept securely and never labelled with your address, so it can't be traced back to your home.</p>
         <div class="svc-foot">
           <div class="svc-price">£8–£20<small>per walk</small></div>
           <button class="mini-btn" onclick="bookService('Dog walking / dog care')">Book this</button>
@@ -419,7 +422,6 @@ footer .em{color:var(--sun);font-weight:900}
           <li>Back-garden &amp; indoor houseplants — if you can leave access</li>
           <li>A quick photo so you know all's well</li>
         </ul>
-        <p class="svc-note">🔑 <b>Need me inside?</b> We always meet face-to-face first, so a key only ever changes hands once you're comfortable. Any key you leave is kept securely and never labelled with your address, so it can't be traced back to your home.</p>
         <div class="svc-foot">
           <div class="svc-price">£5–£10<small>per visit</small></div>
           <button class="mini-btn" onclick="bookService('Plant watering')">Book this</button>
@@ -464,6 +466,10 @@ footer .em{color:var(--sun);font-weight:900}
         <div class="faq-body"><p>Of course — free with 24 hours' notice. Life happens.</p></div>
       </div>
       <div class="faq reveal">
+        <button type="button" class="faq-q">How do keys and access work?</button>
+        <div class="faq-body"><p>We always meet face-to-face first, so a key only ever changes hands once you're comfortable. Any key you leave is kept secure and never labelled with your address, so it can't be traced back to your home — and it's returned as soon as the job's done.</p></div>
+      </div>
+      <div class="faq reveal">
         <button type="button" class="faq-q">Are your parents involved?</button>
         <div class="faq-body"><p>Yes — one of them comes to every first meet &amp; greet, they know every booking I take, and they're always reachable. You're dealing with me, backed by them.</p></div>
       </div>
@@ -492,55 +498,18 @@ footer .em{color:var(--sun);font-weight:900}
         </div>
         <p style="opacity:.9;margin-top:18px;font-size:.95rem">On a street nearby but not listed? If it's a short walk from Abbeville Village, just ask — I can almost certainly reach you.</p>
       </div>
-      <div class="calc reveal d1">
-        <h3>Build your weekly plan</h3>
-        <p style="color:var(--ink-soft);font-size:.9rem">Tap + and − — your total updates as you go. Like the look of it? Send it to me in one tap below.</p>
-
-        <!-- Dog walks -->
-        <div class="plan-card">
-          <div class="plan-top">
-            <div class="plan-info"><span class="plan-emoji">🐕</span><div><div class="plan-name">Dog walks</div><div class="plan-desc">Solo walks — your dog, my full attention</div></div></div>
-            <div class="stepper"><button type="button" onclick="step('walks',-1)">−</button><b id="walksV">1</b><button type="button" onclick="step('walks',1)">+</button></div>
-          </div>
-          <div class="dur-toggle" id="durToggle">
-            <button type="button" data-price="8" class="active" onclick="setDur(this)">30 min<small>£8</small></button>
-            <button type="button" data-price="14" onclick="setDur(this)">60 min<small>£14</small></button>
-            <button type="button" data-price="20" onclick="setDur(this)">90 min<small>£20</small></button>
-          </div>
-        </div>
-
-        <!-- Dog drop-ins -->
-        <div class="plan-card">
-          <div class="plan-top">
-            <div class="plan-info"><span class="plan-emoji">🦴</span><div><div class="plan-name">Dog drop-ins</div><div class="plan-desc">Quick feed-and-check visits while you're out</div></div></div>
-            <div class="stepper"><button type="button" onclick="step('sit',-1)">−</button><b id="sitV">1</b><button type="button" onclick="step('sit',1)">+</button></div>
-          </div>
-        </div>
-
-        <!-- Plant watering -->
-        <div class="plan-card">
-          <div class="plan-top">
-            <div class="plan-info"><span class="plan-emoji">💧</span><div><div class="plan-name">Plant watering</div><div class="plan-desc">Beds, pots, baskets &amp; indoor plants</div></div></div>
-            <div class="stepper"><button type="button" onclick="step('gard',-1)">−</button><b id="gardV">1</b><button type="button" onclick="step('gard',1)">+</button></div>
-          </div>
-        </div>
-
-        <!-- Holiday package -->
-        <div class="plan-card">
-          <div class="plan-top">
-            <div class="plan-info"><span class="plan-emoji">🏖️</span><div><div class="plan-name">Holiday package visits</div><div class="plan-desc">Plants + bins + post + lights — the lived-in look while you're away</div></div></div>
-            <div class="stepper"><button type="button" onclick="step('holi',-1)">−</button><b id="holiV">0</b><button type="button" onclick="step('holi',1)">+</button></div>
-          </div>
-        </div>
-
-        <div class="out">
-          <div class="out-label">Your weekly total</div>
-          <div class="plan-breakdown" id="planBreakdown"></div>
-          <div class="big" id="estWeek">£21</div>
-          <small>estimated per week · final price confirmed when you book</small>
-          <button type="button" class="plan-cta" onclick="scrollToId('contact')">✉️ Ask about this plan</button>
-          <a href="#" class="plan-reset" onclick="resetPlan();return false;">Reset</a>
-        </div>
+      <div class="contact-side reveal d1" style="border-radius:22px">
+        <div class="side-badge">🏡 Based in Abbeville Village, SW4</div>
+        <h3>Your actual neighbour — not an agency</h3>
+        <p class="side-lead">I'm Lucas, a 14-year-old local student. I'm full-time all summer, and I'll keep select weekend slots going into September — so if your dog loves me, we can keep the routine. That means:</p>
+        <ul class="side-list">
+          <li>I walk to you from Abbeville Village — 30 minutes at most</li>
+          <li>You always deal with me, the same face each time</li>
+          <li>Honest local prices — pay after for one-offs, 50/50 for holiday bookings</li>
+          <li>Flexible around your week — mornings, afters or weekends</li>
+          <li>Away for a while? I can do regular check-ups so your home looks lived-in</li>
+        </ul>
+        <p class="side-foot">Prefer to chat first? Just email and say hello — happy to answer any questions before you book.</p>
       </div>
     </div>
   </div>
@@ -553,9 +522,10 @@ footer .em{color:var(--sun);font-weight:900}
     <h2 class="sec-title">Book your Clapham neighbour</h2>
     <p class="sec-sub">I live right here in Clapham, so I walk round to you. I reply the same day, every day.</p>
     <div class="contact-card reveal">
-      <div class="contact-left">
-        <h2>Send me an enquiry ✉️</h2>
-        <p>Fill this in and it lands straight in my inbox — I reply the same day, every day. Built a plan above? It attaches automatically.</p>
+      <div class="contact-left calc-in-contact">
+        <div class="calc">
+          <h3>Send me an enquiry</h3>
+          <p style="color:var(--ink-soft);font-size:.9rem">Fill this in and it lands straight in my inbox — I reply the same day. Built a plan? It attaches automatically.</p>
         <!-- Formspree endpoint -->
         <form class="booking-form" action="https://formspree.io/f/mnjeaevd" method="POST" onsubmit="attachPlan()">
           <div class="ff-row">
@@ -591,19 +561,58 @@ footer .em{color:var(--sun);font-weight:900}
           <button type="submit" class="ff-submit">Send my enquiry 🐾🐾</button>
           <p class="ff-privacy">🔒 Street name only for now — I'll never ask for your house number until a booking is confirmed. Your details go straight to my inbox and nowhere else.</p>
         </form>
+        </div>
       </div>
-      <div class="contact-right contact-side">
-        <div class="side-badge">🏡 Based in Abbeville Village, SW4</div>
-        <h3>Your actual neighbour — not an agency</h3>
-        <p class="side-lead">I'm Lucas, a 14-year-old local student. I'm full-time all summer, and I'll keep select weekend slots going into September — so if your dog loves me, we can keep the routine. That means:</p>
-        <ul class="side-list">
-          <li>I walk to you from Abbeville Village — 30 minutes at most</li>
-          <li>You always deal with me, the same face each time</li>
-          <li>Honest local prices — pay after for one-offs, 50/50 for holiday bookings</li>
-          <li>Flexible around your week — mornings, afters or weekends</li>
-          <li>Away for a while? I can do regular check-ups so your home looks lived-in</li>
-        </ul>
-        <p class="side-foot">Prefer to chat first? Just email and say hello — happy to answer any questions before you book.</p>
+      <div class="contact-right calc-in-contact">
+        <div class="calc">
+          <h3>Build your weekly plan</h3>
+          <p style="color:var(--ink-soft);font-size:.9rem">Tap + and − — your total updates as you go, then send it with your enquiry.</p>
+
+          <!-- Dog walks -->
+          <div class="plan-card">
+            <div class="plan-top">
+              <div class="plan-info"><span class="plan-emoji">🐕</span><div><div class="plan-name">Dog walks</div><div class="plan-desc">Solo walks — your dog, my full attention</div></div></div>
+              <div class="stepper"><button type="button" onclick="step('walks',-1)">−</button><b id="walksV">1</b><button type="button" onclick="step('walks',1)">+</button></div>
+            </div>
+            <div class="dur-toggle" id="durToggle">
+              <button type="button" data-price="8" class="active" onclick="setDur(this)">30 min<small>£8</small></button>
+              <button type="button" data-price="14" onclick="setDur(this)">60 min<small>£14</small></button>
+              <button type="button" data-price="20" onclick="setDur(this)">90 min<small>£20</small></button>
+            </div>
+          </div>
+
+          <!-- Dog drop-ins -->
+          <div class="plan-card">
+            <div class="plan-top">
+              <div class="plan-info"><span class="plan-emoji">🦴</span><div><div class="plan-name">Dog drop-ins</div><div class="plan-desc">Quick feed-and-check visits while you're out</div></div></div>
+              <div class="stepper"><button type="button" onclick="step('sit',-1)">−</button><b id="sitV">1</b><button type="button" onclick="step('sit',1)">+</button></div>
+            </div>
+          </div>
+
+          <!-- Plant watering -->
+          <div class="plan-card">
+            <div class="plan-top">
+              <div class="plan-info"><span class="plan-emoji">💧</span><div><div class="plan-name">Plant watering</div><div class="plan-desc">Beds, pots, baskets &amp; indoor plants</div></div></div>
+              <div class="stepper"><button type="button" onclick="step('gard',-1)">−</button><b id="gardV">1</b><button type="button" onclick="step('gard',1)">+</button></div>
+            </div>
+          </div>
+
+          <!-- Holiday package -->
+          <div class="plan-card">
+            <div class="plan-top">
+              <div class="plan-info"><span class="plan-emoji">🏖️</span><div><div class="plan-name">Holiday package visits</div><div class="plan-desc">Plants + bins + post + lights — the lived-in look while you're away</div></div></div>
+              <div class="stepper"><button type="button" onclick="step('holi',-1)">−</button><b id="holiV">0</b><button type="button" onclick="step('holi',1)">+</button></div>
+            </div>
+          </div>
+
+          <div class="out">
+            <div class="out-label">Your weekly total</div>
+            <div class="plan-breakdown" id="planBreakdown"></div>
+            <div class="big" id="estWeek">£21</div>
+            <small>estimated per week · final price confirmed when you book</small>
+            <a href="#" class="plan-reset" onclick="resetPlan();return false;">Reset</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
