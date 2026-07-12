@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clapham Paws &amp; Plants</title>
+<style>
+:root{
+  --sun:#ffb703;
+  --sun-deep:#fb8500;
+  --leaf:#2a9d3c;
+  --leaf-deep:#127a25;
+  --sky:#48c9e8;
+  --sky-deep:#1b9bc4;
+  --cream:#fff8ec;
+  --paper:#ffffff;
+  --ink:#173a2a;
+  --ink-soft:#4a6a5a;
+  --shadow:0 14px 34px rgba(18,122,37,.16);
+  --shadow-lift:0 22px 50px rgba(251,133,0,.28);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Trebuchet MS","Segoe UI",Verdana,sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+h1,h2,h3{font-family:"Verdana","Trebuchet MS",sans-serif;letter-spacing:-.02em;line-height:1.1}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+/* ---------- top bar ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  background:var(--cream);
+  box-shadow:0 2px 0 var(--sun),0 6px 18px rgba(18,122,37,.08);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.15rem}
+.brand .mark{
+  width:38px;height:38px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,var(--sun),var(--sun-deep));
+  display:grid;place-items:center;font-size:1.2rem;box-shadow:0 4px 12px rgba(251,133,0,.4)
+}
+.brand span{color:var(--leaf-deep)}
+.brand em{color:var(--sun-deep);font-style:normal}
+.nav-links{display:flex;gap:26px;align-items:center;font-weight:700;font-size:.95rem}
+.nav-links a{color:var(--ink-soft);transition:color .2s;position:relative;padding:4px 0}
+.nav-links a:not(.nav-cta)::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:3px;border-radius:3px;background:var(--sun-deep);transform:scaleX(0);transform-origin:left;transition:transform .2s}
+.nav-links a:not(.nav-cta):hover{color:var(--leaf-deep)}
+.nav-links a:not(.nav-cta):hover::after{transform:scaleX(1)}
+.nav-cta{
+  background:linear-gradient(135deg,var(--leaf),var(--leaf-deep));
+  color:#fff!important;padding:13px 34px;border-radius:40px;font-weight:800;font-size:1rem;white-space:nowrap;
+  box-shadow:0 6px 16px rgba(18,122,37,.35);transition:transform .18s,box-shadow .18s
+}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(18,122,37,.45)}
+.burger{display:none;font-size:1.6rem;background:none;border:none;cursor:pointer;color:var(--leaf-deep)}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;padding:70px 0 90px;
+  background:
+    radial-gradient(1200px 420px at 80% -10%,rgba(72,201,232,.28),transparent 60%),
+    radial-gradient(900px 400px at 5% 110%,rgba(42,157,60,.22),transparent 60%),
+    linear-gradient(180deg,#fffdf6,#fff8ec);
+  overflow:hidden;
+}
+.blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.5;z-index:0}
+.b1{width:220px;height:220px;background:var(--sun);top:-60px;right:8%;animation:float 9s ease-in-out infinite}
+.b2{width:150px;height:150px;background:var(--sky);bottom:20px;left:4%;animation:float 11s ease-in-out infinite reverse}
+@keyframes float{50%{transform:translateY(-26px)}}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fff;border:2px solid var(--sun);color:var(--sun-deep);
+  padding:7px 16px;border-radius:40px;font-weight:800;font-size:.85rem;margin-bottom:20px;
+  box-shadow:0 4px 12px rgba(251,133,0,.16)
+}
+.hero h1{font-size:3.3rem;color:var(--ink);margin-bottom:16px}
+.hero h1 .hl{
+  background:linear-gradient(120deg,var(--leaf),var(--leaf-deep));
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.hero p.lead{font-size:1.2rem;color:var(--ink-soft);max-width:520px;margin-bottom:28px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:none;
+  padding:15px 26px;border-radius:44px;font-weight:900;font-size:1rem;font-family:inherit;
+  transition:transform .18s,box-shadow .18s;
+}
+.btn-primary{background:linear-gradient(135deg,var(--sun),var(--sun-deep));color:#3a2400;box-shadow:var(--shadow-lift)}
+.btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 26px 56px rgba(251,133,0,.4)}
+.btn-ghost{background:#fff;color:var(--leaf-deep);border:2px solid var(--leaf)}
+.btn-ghost:hover{transform:translateY(-3px);background:var(--leaf);color:#fff}
+.trust{display:flex;gap:22px;flex-wrap:wrap;font-size:.9rem;font-weight:700;color:var(--ink-soft)}
+.trust span{display:flex;align-items:center;gap:7px}
+.trust .dot{width:9px;height:9px;border-radius:50%;background:var(--leaf)}
+
+/* hero card */
+.hero-card{
+  background:#fff;border-radius:26px;padding:28px;box-shadow:var(--shadow);
+  border:3px solid #fff;position:relative;transform:rotate(1.4deg)
+}
+.hero-card::before{content:"";position:absolute;inset:0;border-radius:26px;border:2px dashed rgba(251,133,0,.35);margin:8px;pointer-events:none}
+.hc-row{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px dashed #e8e0cf}
+.hc-row:last-child{border-bottom:none}
+.hc-ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:1.4rem;flex-shrink:0}
+.hc-ic.g{background:#e5f6e8}
+.hc-ic.p{background:#e5f4fb}
+.hc-t{font-weight:900;color:var(--ink)}
+.hc-s{font-size:.85rem;color:var(--ink-soft)}
+.hc-price{margin-left:auto;font-weight:900;color:var(--sun-deep);white-space:nowrap}
+
+/* ---------- section frame ---------- */
+section{padding:74px 0}
+.eyebrow{display:block;text-align:center;color:var(--sun-deep);font-weight:900;letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;margin-bottom:10px}
+.sec-title{text-align:center;font-size:2.3rem;color:var(--ink);margin-bottom:12px}
+.sec-sub{text-align:center;color:var(--ink-soft);max-width:620px;margin:0 auto 44px;font-size:1.05rem}
+
+/* ---------- services ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:stretch}
+.svc{
+  background:#fff;border-radius:22px;padding:30px;box-shadow:var(--shadow);
+  border-top:6px solid var(--leaf);position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;
+  display:flex;flex-direction:column
+}
+.svc.pet{border-top-color:var(--sky-deep)}
+.svc:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift)}
+.svc-ic{font-size:2.4rem;margin-bottom:14px}
+.svc h3{font-size:1.45rem;margin-bottom:8px}
+.svc p{color:var(--ink-soft);margin-bottom:16px}
+.svc ul{list-style:none;margin-bottom:20px}
+.svc li{padding:6px 0 6px 26px;position:relative;color:var(--ink);font-size:.96rem}
+.svc li::before{content:"✔";position:absolute;left:0;color:var(--leaf);font-weight:900}
+.svc.pet li::before{color:var(--sky-deep)}
+.svc-note{background:#e5f4fb;border-left:4px solid var(--sky-deep);border-radius:10px;padding:14px 16px;margin-bottom:22px;font-size:.88rem;color:var(--ink);line-height:1.5}
+.svc-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px dashed #e8e0cf;padding-top:18px;margin-top:auto}
+.svc-price{font-weight:900;font-size:1.25rem;color:var(--sun-deep);line-height:1.15}
+.svc-price small{display:block;font-size:.74rem;color:var(--ink-soft);font-weight:700;margin-top:2px}
+.mini-btn{
+  background:linear-gradient(135deg,var(--sun),var(--sun-deep));color:#3a2400;
+  border:none;cursor:pointer;font-family:inherit;font-weight:900;padding:12px 20px;border-radius:34px;
+  transition:transform .15s;font-size:.9rem;white-space:nowrap
+}
+.mini-btn:hover{transform:scale(1.05)}
+
+/* ---------- how / steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+@media(max-width:860px){.steps{grid-template-columns:1fr}}
+.step{background:var(--paper);border-radius:20px;padding:28px;text-align:center;box-shadow:var(--shadow);position:relative}
+.step .num{width:52px;height:52px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;font-size:1.4rem;font-weight:900;color:#fff;background:linear-gradient(135deg,var(--sky),var(--sky-deep));box-shadow:0 8px 18px rgba(27,155,196,.35)}
+.step h3{font-size:1.2rem;margin-bottom:6px}
+.step p{color:var(--ink-soft);font-size:.95rem}
+
+/* ---------- pricing / area band ---------- */
+.band{background:linear-gradient(135deg,var(--leaf),var(--leaf-deep));color:#fff}
+.band .sec-title,.band .eyebrow{color:#fff}
+.band .eyebrow{opacity:.85}
+.band .sec-sub{color:rgba(255,255,255,.9)}
+.area-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center}
+.area-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.area-list span{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:8px 14px;border-radius:30px;font-weight:700;font-size:.9rem}
+.map-card{background:#fff;border-radius:18px;padding:12px;box-shadow:var(--shadow)}
+.map-svg{display:block;width:100%;height:auto;border-radius:12px;overflow:hidden}
+.map-cap{color:var(--ink-soft);font-size:.82rem;margin-top:10px;padding:0 4px 2px}
+.calc{background:#fff;color:var(--ink);border-radius:22px;padding:26px;box-shadow:var(--shadow)}
+.calc h3{color:var(--leaf-deep);margin-bottom:6px}
+.calc .field{margin:16px 0}
+.calc-steps{display:flex;align-items:center;justify-content:center;gap:0;margin:18px 0 4px}
+.cstep{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:.9rem;background:#eadfc8;color:#9a8a68;position:relative}
+.cstep:not(:last-child){margin-right:44px}
+.cstep:not(:last-child)::after{content:"";position:absolute;left:36px;top:50%;width:44px;height:3px;background:#eadfc8;transform:translateY(-50%)}
+.cstep.active{background:var(--leaf);color:#fff}
+.cstep.done{background:var(--leaf-deep);color:#fff}
+.cstep.done::after{background:var(--leaf)}
+.calc-panel{display:none;border:1px solid #eadfc8;border-radius:14px;padding:16px;margin-top:14px;background:#fffdf8;animation:popIn .2s ease}
+.calc-panel.active{display:block}
+.calc-head{font-weight:900;font-size:1.05rem;color:var(--leaf-deep);padding-bottom:8px;margin-bottom:4px;border-bottom:2px dashed #e8e0cf}
+.calc-next,.calc-back{cursor:pointer;font-family:inherit;font-weight:800;border-radius:12px;padding:11px 18px;font-size:.9rem;transition:transform .15s}
+.calc-next{background:linear-gradient(135deg,var(--leaf),var(--leaf-deep));color:#fff;border:none;margin-top:16px;width:100%}
+.calc-back{background:var(--cream);border:2px solid #eadfc8;color:var(--ink-soft)}
+.calc-next:hover,.calc-back:hover{transform:translateY(-2px)}
+.calc-nav{display:flex;gap:10px;margin-top:16px}
+.calc-nav .calc-next{margin-top:0;flex:1}
+.calc label{display:flex;justify-content:space-between;font-weight:800;font-size:.9rem;margin-bottom:6px}
+.calc label b{color:var(--sun-deep)}
+.calc input[type=range]{width:100%;accent-color:var(--leaf)}
+.dur-toggle{display:flex;gap:8px;margin-top:8px}
+.dur-toggle button{
+  flex:1;cursor:pointer;font-family:inherit;font-weight:800;font-size:.85rem;
+  padding:10px 6px;border-radius:12px;border:2px solid #eadfc8;background:var(--cream);color:var(--ink-soft);
+  transition:all .15s
+}
+.dur-toggle button.active{background:var(--leaf);border-color:var(--leaf);color:#fff;box-shadow:0 6px 14px rgba(18,122,37,.28)}
+.dur-toggle button small{display:block;font-weight:700;font-size:.72rem;opacity:.8}
+.calc .out{margin-top:20px;background:var(--cream);border-radius:16px;padding:18px;text-align:center;border:2px dashed var(--sun)}
+.out-label{font-weight:900;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sun-deep);margin-bottom:8px}
+.out-breakdown{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;font-size:.82rem;font-weight:700;color:var(--ink-soft);margin-bottom:8px}
+.out-breakdown .out-plus{color:var(--sun-deep);font-weight:900}
+.calc .out .big{font-size:2.4rem;font-weight:900;color:var(--leaf-deep);line-height:1}
+.calc .out small{color:var(--ink-soft);font-weight:700}
+
+/* ---------- reviews ---------- */
+.rev-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.rev{background:#fff;border-radius:20px;padding:26px;box-shadow:var(--shadow);border-left:5px solid var(--sun)}
+.stars{color:var(--sun-deep);font-size:1.05rem;margin-bottom:10px;letter-spacing:2px}
+.rev p{color:var(--ink);font-style:italic;margin-bottom:14px}
+.rev .who{display:flex;align-items:center;gap:10px;font-weight:800}
+.rev .av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:900;background:var(--leaf-deep)}
+.rev .who small{display:block;color:var(--ink-soft);font-weight:700}
+
+/* ---------- contact ---------- */
+.contact-card{
+  background:#fff;border-radius:26px;box-shadow:var(--shadow);overflow:hidden;
+  display:grid;grid-template-columns:1fr 1fr
+}
+.contact-left{padding:40px;background:linear-gradient(160deg,#fffdf6,#fff2d6)}
+.contact-left h2{font-size:2rem;margin-bottom:10px;color:var(--ink)}
+.contact-left p{color:var(--ink-soft);margin-bottom:22px}
+.contact-btn{
+  display:flex;align-items:center;gap:14px;width:100%;margin-bottom:14px;
+  background:#fff;border:2px solid #f0e6cf;border-radius:16px;padding:16px 18px;cursor:pointer;
+  font-family:inherit;text-align:left;transition:transform .15s,border-color .15s,box-shadow .15s
+}
+.contact-btn:hover{transform:translateX(4px);border-color:var(--sun);box-shadow:0 8px 20px rgba(251,133,0,.16)}
+.contact-btn .cb-ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:1.3rem;background:#e5f6e8;flex-shrink:0}
+.contact-btn .cb-t{font-weight:900;color:var(--ink)}
+.contact-btn .cb-s{font-size:.85rem;color:var(--ink-soft)}
+/* email modal */
+.mail-modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(23,58,42,.55);backdrop-filter:blur(3px);align-items:center;justify-content:center;padding:20px}
+.mail-modal.open{display:flex}
+.mail-box{background:#fff;border-radius:20px;padding:28px;max-width:440px;width:100%;box-shadow:0 30px 70px rgba(0,0,0,.35);position:relative;animation:popIn .25s ease}
+@keyframes popIn{from{opacity:0;transform:scale(.94) translateY(10px)}to{opacity:1;transform:none}}
+.mail-close{position:absolute;top:14px;right:16px;border:none;background:none;font-size:1.7rem;line-height:1;cursor:pointer;color:var(--ink-soft)}
+.mail-box h3{color:var(--leaf-deep);margin-bottom:4px;font-size:1.4rem}
+.mail-lead{color:var(--ink-soft);font-size:.92rem;margin-bottom:18px}
+.mail-field{margin-bottom:16px}
+.mail-field label{display:block;font-weight:800;font-size:.85rem;margin-bottom:6px;color:var(--ink)}
+.mail-copyrow{display:flex;gap:8px;align-items:stretch}
+.mail-copyrow input,.mail-copyrow textarea{flex:1;min-width:0;padding:11px 12px;border:2px solid #eadfc8;border-radius:12px;font-family:inherit;font-size:.92rem;background:var(--cream);color:var(--ink);resize:none}
+.mail-copyrow button{flex-shrink:0;align-self:flex-start;background:linear-gradient(135deg,var(--leaf),var(--leaf-deep));color:#fff;border:none;cursor:pointer;font-family:inherit;font-weight:800;padding:11px 16px;border-radius:12px;transition:transform .15s}
+.mail-copyrow button:hover{transform:scale(1.04)}
+.mail-copyrow button.done{background:var(--sun-deep)}
+.mail-open{display:inline-block;margin-top:6px;font-weight:800;color:var(--leaf-deep);text-decoration:underline}
+.contact-privacy{font-size:.82rem;color:var(--ink-soft);background:#eafaee;border-radius:12px;padding:12px 14px;margin-bottom:0;margin-top:4px;line-height:1.5}
+.contact-right{padding:40px}
+.contact-side{background:linear-gradient(160deg,#eafaee,#d8f3e0)}
+.side-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:2px solid var(--leaf);color:var(--leaf-deep);font-weight:800;font-size:.82rem;padding:7px 14px;border-radius:30px;margin-bottom:16px}
+.contact-side h3{color:var(--leaf-deep);font-size:1.35rem;margin-bottom:8px}
+.side-lead{color:var(--ink-soft);font-weight:700;margin-bottom:12px}
+.side-list{list-style:none;margin-bottom:18px}
+.side-list li{padding:8px 0 8px 30px;position:relative;color:var(--ink);font-size:.96rem;border-bottom:1px dashed #c4e6cd}
+.side-list li:last-child{border-bottom:none}
+.side-list li::before{content:"🏠";position:absolute;left:0;font-size:.95rem}
+.side-foot{color:var(--ink-soft);font-size:.92rem;font-style:italic}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:#cfe6d7;padding:44px 0 80px;text-align:center}
+footer .brand{justify-content:center;margin-bottom:14px;color:#fff}
+footer .brand span,footer .brand em{color:#fff}
+footer .flinks{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-bottom:18px;font-weight:700}
+footer .flinks a{color:#cfe6d7;transition:color .2s}
+footer .flinks a:hover{color:var(--sun)}
+footer .legal{font-size:.82rem;color:#8bb39a;max-width:640px;margin:0 auto;line-height:1.6}
+footer .em{color:var(--sun);font-weight:900}
+
+@media(max-width:860px){
+  .nav-links{display:none}
+  .nav-links.open{display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;background:var(--cream);padding:20px;gap:16px;border-bottom:3px solid var(--sun)}
+  .burger{display:block}
+  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .hero h1{font-size:2.5rem}
+  .svc-grid,.steps,.rev-grid,.area-grid,.contact-card{grid-template-columns:1fr}
+  .contact-left,.contact-right{padding:30px}
+}
+@media print{
+  header,.burger,.hero-actions,.mini-btn,.nav-cta{display:none}
+  body{background:#fff}
+}
+
+/* ---------- scroll reveal ---------- */
+.reveal{opacity:0;transform:translateY(60px) scale(.97);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.12s}
+.reveal.d2{transition-delay:.24s}
+.reveal.d3{transition-delay:.36s}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="brand"><span class="mark">🐾</span><span>Clapham Paws</span> <em>&amp; Plants</em></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#area">Prices &amp; area</a>
+      <a href="#contact" class="nav-cta">Book me</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<a id="top"></a>
+<section class="hero" style="padding-top:56px">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill">🌞 Full-time all summer · weekends &amp; after-school from September</span>
+      <h1>Dog walks &amp; plant watering, <span class="hl">done by a friendly local</span></h1>
+      <p class="lead">Hi, I'm Lucas — a 14-year-old and your neighbour in Clapham. I walk dogs and keep your plants watered so you don't have to worry. Reliable and just around the corner — book me for a one-off or a regular slot.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="scrollToId('contact')">📅 Book a slot</button>
+        <button class="btn btn-ghost" onclick="scrollToId('services')">See what I do</button>
+      </div>
+      <div class="trust">
+        <span><span class="dot"></span> Same-day replies</span>
+        <span><span class="dot"></span> Local — I walk to you</span>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-row">
+        <div class="hc-ic p">🦮</div>
+        <div><div class="hc-t">Dog walking</div><div class="hc-s">30, 60, 90 min · rain or shine</div></div>
+        <div class="hc-price">from £8</div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-ic p">🦴</div>
+        <div><div class="hc-t">Dog sitting &amp; feeding</div><div class="hc-s">Drop-ins for your dog while you're away</div></div>
+        <div class="hc-price">from £8</div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-ic g">💧</div>
+        <div><div class="hc-t">Watering plants</div><div class="hc-s">Keep beds &amp; pots alive while away</div></div>
+        <div class="hc-price">from £5</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <span class="eyebrow">What I offer</span>
+    <h2 class="sec-title">Two things, done properly</h2>
+    <p class="sec-sub">I keep it simple so I can do it well: happy dogs and healthy plants. Pick what you need — mix and match anytime.</p>
+    <div class="svc-grid">
+      <div class="svc pet reveal">
+        <div class="svc-ic">🐾</div>
+        <h3>Dog walking &amp; care</h3>
+        <p>Dogs only — that's what I know best. Your dog gets a proper walk and fresh water, and I'll pop in to feed them if you're out for the day.</p>
+        <ul>
+          <li>30, 60 or 90-minute walks — as long as you like</li>
+          <li>Solo walks — your dog, my full attention</li>
+          <li>Poo bags and a spare leash always provided</li>
+          <li>Rainy day? Paws towel-dried before your dog heads back inside</li>
+          <li>Feeding &amp; drop-in visits while you're out</li>
+          <li>Photo update sent after every visit</li>
+        </ul>
+        <p class="svc-note">🔑 <b>Need me to let myself in?</b> We always meet face-to-face first, so a key only ever changes hands once you're comfortable. Any key you leave is kept securely and never labelled with your address, so it can't be traced back to your home.</p>
+        <div class="svc-foot">
+          <div class="svc-price">£8–£20<small>per walk</small></div>
+          <button class="mini-btn" onclick="bookService('Dog walking / dog care')">Book this</button>
+        </div>
+      </div>
+      <div class="svc reveal d1">
+        <div class="svc-ic">💧</div>
+        <h3>Plant watering</h3>
+        <p>Off on holiday, or too busy in the summer heat? I'll pop round and keep your plants happy and hydrated so nothing wilts while you're away.</p>
+        <ul>
+          <li>Watering front-garden beds, borders &amp; pots</li>
+          <li>Hanging baskets &amp; window boxes</li>
+          <li>Back-garden &amp; indoor houseplants — if you can leave access</li>
+          <li>A quick photo so you know all's well</li>
+        </ul>
+        <p class="svc-note">🔑 <b>Need me inside?</b> We always meet face-to-face first, so a key only ever changes hands once you're comfortable. Any key you leave is kept securely and never labelled with your address, so it can't be traced back to your home.</p>
+        <div class="svc-foot">
+          <div class="svc-price">£5–£10<small>per visit</small></div>
+          <button class="mini-btn" onclick="bookService('Plant watering')">Book this</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how" style="background:linear-gradient(180deg,#fff8ec,#fffdf6)">
+  <div class="wrap">
+    <span class="eyebrow">Simple &amp; safe</span>
+    <h2 class="sec-title">How booking works</h2>
+    <p class="sec-sub">No apps, no fuss — and we always meet first, so you know exactly who you're trusting.</p>
+    <div class="steps">
+      <div class="step reveal"><div class="num">1</div><h3>Get in touch</h3><p>Email or WhatsApp me with what you need and your street. Takes a minute.</p></div>
+      <div class="step reveal d1"><div class="num">2</div><h3>Free meet &amp; greet</h3><p>A quick 5-minute doorstep hello — you and your dog meet me, and we look at the garden together. No obligation.</p></div>
+      <div class="step reveal d2"><div class="num">3</div><h3>We pick a time</h3><p>I confirm a slot and a clear price — no surprises.</p></div>
+      <div class="step reveal d3"><div class="num">4</div><h3>Simple, fair payment</h3><p>One-off jobs: pay cash or bank transfer after. Holiday or multi-week bookings: half up front, half when I'm done — fair on both of us.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- AREA + CALCULATOR -->
+<section id="area" class="band">
+  <div class="wrap">
+    <span class="eyebrow">Prices &amp; where I go</span>
+    <h2 class="sec-title">Local means local</h2>
+    <p class="sec-sub">I'm based on Rodenhurst Road and only take jobs within a 30-minute walk, so I'm always on time and never rushed.</p>
+    <div class="area-grid">
+      <div class="reveal">
+        <h3 style="font-size:1.4rem;margin-bottom:8px">My patch — 30 mins on foot</h3>
+        <p style="opacity:.92;margin-bottom:6px">Based on Rodenhurst Road. If you're on one of these nearby streets, I can pop round in minutes:</p>
+        <div class="area-list">
+          <span>Rodenhurst Road</span><span>Abbeville Road</span><span>Clarence Avenue</span>
+          <span>Kings Avenue</span><span>Cavendish Road</span><span>Elms Road</span>
+          <span>Narbonne Avenue</span><span>Clapham Park</span><span>Clapham South</span>
+        </div>
+        <p style="opacity:.9;margin-top:18px;font-size:.95rem">On a street nearby but not listed? If it's a short walk from Rodenhurst Road, just ask — I can almost certainly reach you.</p>
+      </div>
+      <div class="calc reveal d1">
+        <h3>Build your weekly plan</h3>
+        <p style="color:var(--ink-soft);font-size:.9rem">Set one service, save it, and move to the next. Your total builds up as you go.</p>
+        <div class="calc-steps" id="calcSteps">
+          <span class="cstep active" data-step="1">1</span>
+          <span class="cstep" data-step="2">2</span>
+          <span class="cstep" data-step="3">3</span>
+        </div>
+
+        <!-- STEP 1: dog walks -->
+        <div class="calc-panel active" data-panel="1">
+          <div class="calc-head">Step 1 · Dog walks</div>
+          <div class="field">
+            <label>Walks per week <b id="walksV">3</b></label>
+            <input type="range" id="walks" min="0" max="7" value="3" oninput="calc()">
+          </div>
+          <div class="field">
+            <label>How long is each walk?</label>
+            <div class="dur-toggle" id="durToggle">
+              <button type="button" data-price="8" class="active" onclick="setDur(this)">30 min<small>£8</small></button>
+              <button type="button" data-price="14" onclick="setDur(this)">60 min<small>£14</small></button>
+              <button type="button" data-price="20" onclick="setDur(this)">90 min<small>£20</small></button>
+            </div>
+          </div>
+          <button type="button" class="calc-next" onclick="gotoStep(2)">Save &amp; next →</button>
+        </div>
+
+        <!-- STEP 2: dog sitting -->
+        <div class="calc-panel" data-panel="2">
+          <div class="calc-head">Step 2 · Dog sitting &amp; feeding</div>
+          <div class="field" style="margin-bottom:6px">
+            <label>Drop-in visits per week <b id="sitV">0</b></label>
+            <input type="range" id="sit" min="0" max="7" value="0" oninput="calc()">
+          </div>
+          <p style="color:var(--ink-soft);font-size:.82rem;margin-bottom:0">Quick feed-and-check visits while you're out — £7 each.</p>
+          <div class="calc-nav">
+            <button type="button" class="calc-back" onclick="gotoStep(1)">← Back</button>
+            <button type="button" class="calc-next" onclick="gotoStep(3)">Save &amp; next →</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: plant watering -->
+        <div class="calc-panel" data-panel="3">
+          <div class="calc-head">Step 3 · Plant watering</div>
+          <div class="field" style="margin-bottom:6px">
+            <label>Watering visits per week <b id="gardV">2</b></label>
+            <input type="range" id="gard" min="0" max="7" value="2" oninput="calc()">
+          </div>
+          <p style="color:var(--ink-soft);font-size:.82rem;margin-bottom:0">Beds, pots and indoor plants — £5 each.</p>
+          <div class="calc-nav">
+            <button type="button" class="calc-back" onclick="gotoStep(2)">← Back</button>
+          </div>
+        </div>
+
+        <div class="out">
+          <div class="out-label">Your weekly total</div>
+          <div class="out-breakdown">
+            <span id="brkWalks">Walks £24</span><span class="out-plus">+</span>
+            <span id="brkSit">Sitting £0</span><span class="out-plus">+</span>
+            <span id="brkGard">Watering £10</span>
+          </div>
+          <div class="big" id="estWeek">£34</div>
+          <small>estimated per week · final price confirmed when you book</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:linear-gradient(180deg,#fffdf6,#fff2d6)">
+  <div class="wrap">
+    <span class="eyebrow">Let's sort a time</span>
+    <h2 class="sec-title">Book your Clapham neighbour</h2>
+    <p class="sec-sub">I live right here in Clapham, so I walk round to you. I reply the same day, every day.</p>
+    <div class="contact-card reveal">
+      <div class="contact-left">
+        <h2>Get in touch 👋</h2>
+        <p>Tap a button below and it opens your email with the message ready to send. No email app set up? A copy-and-paste box will pop up instead.</p>
+        <a class="contact-btn" href="mailto:lucassdogsandplants@gmail.com?subject=Booking%20request%20-%20Clapham%20Paws%20%26%20Plants&body=Hi!%0A%0AI'd%20like%20to%20book%3A%20(dog%20walk%20%2F%20dog%20sitting%20%2F%20plant%20watering)%0AMy%20street%20(name%20only%20for%20now)%3A%0APreferred%20day%20%26%20time%3A%0A%0AThanks!" onclick="return tryMail(event,'Booking request - Clapham Paws & Plants',&quot;Hi!\n\nI'd like to book: (dog walk / dog sitting / plant watering)\nMy street (name only for now):\nPreferred day & time:\n\nThanks!&quot;)">
+          <div class="cb-ic">✉️</div>
+          <div><div class="cb-t">Email me to book</div><div class="cb-s">lucassdogsandplants@gmail.com</div></div>
+        </a>
+        <a class="contact-btn" href="mailto:lucassdogsandplants@gmail.com?subject=Regular%20weekly%20slot&body=Hi!%20I'd%20like%20a%20regular%20weekly%20slot.%20My%20street%20(name%20only%20for%20now)%20is%3A" onclick="return tryMail(event,'Regular weekly slot',&quot;Hi! I'd like a regular weekly slot. My street (name only for now) is:&quot;)">
+          <div class="cb-ic" style="background:#e5f4fb">🔁</div>
+          <div><div class="cb-t">Set up a regular slot</div><div class="cb-s">Same time each week — best value</div></div>
+        </a>
+        <a class="contact-btn" href="https://wa.me/447568403003?text=Hi%20Lucas!%20I'd%20like%20to%20book%20(dog%20walk%20%2F%20dog%20sitting%20%2F%20plant%20watering).%20My%20street%20is%3A" target="_blank" rel="noopener">
+          <div class="cb-ic" style="background:#e3f7e8">💬</div>
+          <div><div class="cb-t">Message me on WhatsApp</div><div class="cb-s">+44 7568 403003</div></div>
+        </a>
+        <a class="contact-btn" href="#area" onclick="scrollToId('area')">
+          <div class="cb-ic" style="background:#fff2d6">📍</div>
+          <div><div class="cb-t">Check I cover your street</div><div class="cb-s">30 mins walk from Rodenhurst Road</div></div>
+        </a>
+        <p class="contact-privacy">🔒 <b>Why I ask for your street:</b> just so I can check you're within my 30-minute walking radius. Street name only to start — I'll never ask for your full house number until a booking is confirmed.</p>
+      </div>
+      <div class="contact-right contact-side">
+        <div class="side-badge">🏡 Based on Rodenhurst Road</div>
+        <h3>Your actual neighbour — not an agency</h3>
+        <p class="side-lead">I'm Lucas, a 14-year-old local student. I'm full-time all summer, and I'll keep select weekend and after-school slots going into September — so if your dog loves me, we can keep the routine. That means:</p>
+        <ul class="side-list">
+          <li>I walk to you from Rodenhurst Road — 30 minutes at most</li>
+          <li>You always deal with me, the same face each time</li>
+          <li>Honest local prices — pay after for one-offs, 50/50 for holiday bookings</li>
+          <li>Flexible around your week — mornings, afters or weekends</li>
+          <li>Away for a while? I can do regular check-ups so your home looks lived-in</li>
+        </ul>
+        <p class="side-foot">Prefer to chat first? Just email and say hello — happy to answer any questions before you book.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL MODAL -->
+<div class="mail-modal" id="mailModal" onclick="if(event.target===this)closeMail()">
+  <div class="mail-box" role="dialog" aria-modal="true" aria-label="Send Lucas an email">
+    <button class="mail-close" onclick="closeMail()" aria-label="Close">×</button>
+    <h3>Send me a message 🐾</h3>
+    <p class="mail-lead">Copy the message below and email it to me — I'll reply the same day.</p>
+    <div class="mail-field">
+      <label>My email</label>
+      <div class="mail-copyrow">
+        <input type="text" id="mailTo" readonly value="lucassdogsandplants@gmail.com">
+        <button type="button" onclick="copyField('mailTo',this)">Copy</button>
+      </div>
+    </div>
+    <div class="mail-field">
+      <label>Your message</label>
+      <div class="mail-copyrow">
+        <textarea id="mailBody" readonly rows="6"></textarea>
+        <button type="button" onclick="copyField('mailBody',this)">Copy</button>
+      </div>
+    </div>
+    <a class="mail-open" id="mailtoLink" href="#">Or open in your email app →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="mark">🐾</span><span>Clapham Paws</span> <em>&amp; Plants</em></div>
+    <div class="flinks">
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#area">Prices &amp; area</a>
+      <a href="#contact">Book me</a>
+    </div>
+    <p style="margin-bottom:14px">📧 <a href="mailto:lucassdogsandplants@gmail.com" class="em">lucassdogsandplants@gmail.com</a> &nbsp;·&nbsp; 💬 <a href="https://wa.me/447568403003" class="em" target="_blank" rel="noopener">+44 7568 403003</a></p>
+    <p class="legal">
+      Local dog-walking &amp; plant-watering services in Clapham, SW London.
+      A young person's summer venture — casual, self-employed neighbourly work. All bookings arranged directly by email.
+    </p>
+  </div>
+</footer>
+
+<script>
+/* auto-reveal section headers */
+document.querySelectorAll('#services,#how,#area,#contact').forEach(function(sec){
+  var eb=sec.querySelector('.eyebrow'), ti=sec.querySelector('.sec-title'), su=sec.querySelector('.sec-sub');
+  if(eb) eb.classList.add('reveal');
+  if(ti) ti.classList.add('reveal','d1');
+  if(su) su.classList.add('reveal','d2');
+});
+
+/* reveal on scroll */
+(function(){
+  var items=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    items.forEach(function(el){el.classList.add('in');});
+  }else{
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('in');}
+        else if(e.boundingClientRect.top>0){e.target.classList.remove('in');}
+      });
+    },{threshold:.15,rootMargin:'0px 0px -8% 0px'});
+    items.forEach(function(el){obs.observe(el);});
+  }
+})();
+
+function scrollToId(id){
+  var el=document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth'});
+  document.getElementById('navLinks').classList.remove('open');
+}
+document.getElementById('burger').addEventListener('click',function(){
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a, footer .flinks a').forEach(function(a){
+  a.addEventListener('click',function(){document.getElementById('navLinks').classList.remove('open');});
+});
+
+/* price calculator */
+var WALK_PRICE=8, SIT_PRICE=7, GARD_PRICE=5, WEEKS=8;
+function setDur(btn){
+  document.querySelectorAll('#durToggle button').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  WALK_PRICE=+btn.getAttribute('data-price');
+  calc();
+}
+function gotoStep(n){
+  document.querySelectorAll('.calc-panel').forEach(function(p){
+    p.classList.toggle('active',+p.getAttribute('data-panel')===n);
+  });
+  document.querySelectorAll('.cstep').forEach(function(s){
+    var step=+s.getAttribute('data-step');
+    s.classList.toggle('active',step===n);
+    s.classList.toggle('done',step<n);
+  });
+}
+function calc(){
+  var w=+document.getElementById('walks').value;
+  var s=+document.getElementById('sit').value;
+  var g=+document.getElementById('gard').value;
+  document.getElementById('walksV').textContent=w;
+  document.getElementById('sitV').textContent=s;
+  document.getElementById('gardV').textContent=g;
+  var walkCost=w*WALK_PRICE, sitCost=s*SIT_PRICE, gardCost=g*GARD_PRICE;
+  document.getElementById('brkWalks').textContent='Walks £'+walkCost;
+  document.getElementById('brkSit').textContent='Sitting £'+sitCost;
+  document.getElementById('brkGard').textContent='Watering £'+gardCost;
+  document.getElementById('estWeek').textContent='£'+(walkCost+sitCost+gardCost);
+}
+calc();
+
+/* email helpers */
+var MY_EMAIL='lucassdogsandplants@gmail.com';
+
+/* open the visitor's default email pre-filled; if nothing opens, show copy popup */
+function tryMail(e,subject,body){
+  var href='mailto:'+MY_EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  var hidden=false;
+  function onHide(){ hidden=true; }
+  document.addEventListener('visibilitychange',onHide,{once:true});
+  window.addEventListener('blur',onHide,{once:true});
+  /* let the browser follow the mailto (native email handler) */
+  try{ window.location.href=href; }catch(err){}
+  /* if the page is still here after a moment, no email app opened → popup */
+  setTimeout(function(){
+    document.removeEventListener('visibilitychange',onHide);
+    window.removeEventListener('blur',onHide);
+    if(!hidden && !document.hidden){ showMail(subject,body); }
+  },700);
+  if(e) e.preventDefault();
+  return false;
+}
+function showMail(subject,body){
+  document.getElementById('mailBody').value=body;
+  document.getElementById('mailtoLink').href='mailto:'+MY_EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  document.getElementById('mailModal').classList.add('open');
+}
+function closeMail(){
+  document.getElementById('mailModal').classList.remove('open');
+}
+function copyField(id,btn){
+  var el=document.getElementById(id);
+  el.select(); el.setSelectionRange(0,99999);
+  try{ document.execCommand('copy'); }catch(e){}
+  if(navigator.clipboard){ navigator.clipboard.writeText(el.value).catch(function(){}); }
+  var original=btn.textContent;
+  btn.textContent='Copied!'; btn.classList.add('done');
+  setTimeout(function(){ btn.textContent=original; btn.classList.remove('done'); },1600);
+}
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeMail(); });
+
+/* book a specific service via email */
+function bookService(service){
+  var subject='Booking request - '+service;
+  var body='Hi!\n\nI\'d like to book: '+service+'\nMy street (name only for now):\nPreferred day & time:\n';
+  if(service==='Plant watering'){
+    body+='Back-garden or indoor plants too? (yes, I can leave a way in / no, front & pots are fine):\n';
+  }
+  body+='\nThanks!';
+  tryMail(null,subject,body);
+}
+</script>
+</body>
+</html>
