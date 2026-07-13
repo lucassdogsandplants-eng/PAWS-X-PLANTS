@@ -384,6 +384,11 @@ footer .em{color:var(--sun);font-weight:900}
         <div><div class="hc-t">Watering plants</div><div class="hc-s">Keep beds &amp; pots alive while away</div></div>
         <div class="hc-price">from £5</div>
       </div>
+      <div class="hc-row">
+        <div class="hc-ic g">🏖️</div>
+        <div><div class="hc-t">Holiday Package</div><div class="hc-s">Plants, bins, post, lights — the full care</div></div>
+        <div class="hc-price">from £10</div>
+      </div>
     </div>
   </div>
 </section>
@@ -427,6 +432,23 @@ footer .em{color:var(--sun);font-weight:900}
           <button class="mini-btn" onclick="bookService('Plant watering')">Book this</button>
         </div>
       </div>
+      <div class="svc reveal d2">
+        <div class="svc-ic">🏖️</div>
+        <h3>The Holiday Package</h3>
+        <p>Going on holiday? One visit from me covers the lot — your plants watered, bins out, post cleared, lights and blinds varied so your home looks lived-in.</p>
+        <ul>
+          <li>Plants watered — garden beds, pots, baskets and indoor</li>
+          <li>Bins out the night before collection, and back in after</li>
+          <li>Post cleared off the doormat so it doesn't pile up in the window</li>
+          <li>Lights and blinds varied so your home looks lived-in</li>
+          <li>Add a pet drop-in if needed</li>
+          <li>Photo update after every visit</li>
+        </ul>
+        <div class="svc-foot">
+          <div class="svc-price">£10–£55<small>per visit or week</small></div>
+          <button class="mini-btn" onclick="bookService('Holiday Package')">Book this</button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -438,7 +460,7 @@ footer .em{color:var(--sun);font-weight:900}
     <h2 class="sec-title">How booking works</h2>
     <p class="sec-sub">No apps, no fuss — and we always meet first, so you know exactly who you're trusting.</p>
     <div class="steps">
-      <div class="step reveal"><div class="num">1</div><h3>Get in touch</h3><p>Email or WhatsApp me with what you need and your street. Takes a minute.</p></div>
+      <div class="step reveal"><div class="num">1</div><h3>Get in touch</h3><p>Use the enquiry form below with what you need and your street — takes a minute. Prefer email? That works too.</p></div>
       <div class="step reveal d1"><div class="num">2</div><h3>Free meet &amp; greet</h3><p>A quick 5-minute doorstep hello — you and your dog meet me, and we look at the garden together. No obligation.</p></div>
       <div class="step reveal d2"><div class="num">3</div><h3>We pick a time</h3><p>I confirm a slot and a clear price — no surprises.</p></div>
       <div class="step reveal d3"><div class="num">4</div><h3>Simple, fair payment</h3><p>One-off jobs: pay cash or bank transfer after. Holiday or multi-week bookings: half up front, half when I'm done — fair on both of us.</p></div>
@@ -469,13 +491,25 @@ footer .em{color:var(--sun);font-weight:900}
         <button type="button" class="faq-q">How do keys and access work?</button>
         <div class="faq-body"><p>We always meet face-to-face first, so a key only ever changes hands once you're comfortable. Any key you leave is kept secure and never labelled with your address, so it can't be traced back to your home — and it's returned as soon as the job's done.</p></div>
       </div>
-      <div class="faq reveal">
+        <div class="faq reveal">
         <button type="button" class="faq-q">Are your parents involved?</button>
-        <div class="faq-body"><p>Yes — one of them comes to every first meet &amp; greet, they know every booking I take, and they're always reachable. You're dealing with me, backed by them.</p></div>
+        <div class="faq-body"><p>Yes — one of them comes to every first meet &amp; greet, they know every booking I take, and they're always reachable. Flexible around your week — mornings, evenings or weekends.</p></div>
       </div>
       <div class="faq reveal">
         <button type="button" class="faq-q">Do you walk dogs off the lead?</button>
         <div class="faq-body"><p>No — every dog stays on the lead, every time. It's the safest way, and it's non-negotiable.</p></div>
+      </div>
+      <div class="faq reveal">
+        <button type="button" class="faq-q">Who's responsible if something goes wrong?</button>
+        <div class="faq-body"><p>Legally, your dog always remains your responsibility as their owner — that's how UK law treats dog ownership. So every dog booking is confirmed on two conditions: you have pet or third-party insurance in place that covers your dog, and it stays primary if your dog ever causes injury or damage while out with me. We confirm both in a ten-second checklist before our first walk. My side of the deal is making sure it never comes up: lead on at all times, one dog at a time, my full attention.</p></div>
+      </div>
+      <div class="faq reveal">
+        <button type="button" class="faq-q">Are you insured?</button>
+        <div class="faq-body"><p>Professional dog-walker's insurance isn't available until you're 18, so I can't buy it yet. That's exactly why the checklist above exists, why every dog stays on the lead, and why I only take on dogs I can confidently handle.</p></div>
+      </div>
+      <div class="faq reveal">
+        <button type="button" class="faq-q">Are you around after the summer?</button>
+        <div class="faq-body"><p>Yes — weekend slots continue from September. They're limited, so my summer regulars get first pick. If you'd like to keep your slot going into the autumn, just say so when you book.</p></div>
       </div>
     </div>
   </div>
@@ -525,7 +559,7 @@ footer .em{color:var(--sun);font-weight:900}
       <div class="contact-left calc-in-contact">
         <div class="calc">
           <h3>Send me an enquiry</h3>
-          <p style="color:var(--ink-soft);font-size:.9rem">Fill this in and it lands straight in my inbox — I reply the same day. Built a plan? It attaches automatically.</p>
+          <p style="color:var(--ink-soft);font-size:.9rem">Fill this in and it lands straight in my inbox — I reply the same day. Build a plan below and it attaches automatically.</p>
         <!-- Formspree endpoint -->
         <form class="booking-form" action="https://formspree.io/f/mnjeaevd" method="POST" onsubmit="attachPlan()">
           <div class="ff-row">
@@ -559,7 +593,7 @@ footer .em{color:var(--sun);font-weight:900}
           <input type="hidden" id="ff-plan" name="weekly_plan" value="">
           <input type="text" name="_gotcha" style="display:none">
           <button type="submit" class="ff-submit">Send my enquiry 🐾🐾</button>
-          <p class="ff-privacy">🔒 Street name only for now — I'll never ask for your house number until a booking is confirmed. Your details go straight to my inbox and nowhere else.</p>
+          <p class="ff-privacy">🔒 Street name only for now — I'll never ask for your house number until a booking is confirmed. Your details are only ever used to reply to you — never shared, never any marketing.</p>
         </form>
         </div>
       </div>
@@ -607,8 +641,8 @@ footer .em{color:var(--sun);font-weight:900}
 
           <div class="out">
             <div class="out-label">Your weekly total</div>
-            <div class="plan-breakdown" id="planBreakdown"></div>
-            <div class="big" id="estWeek">£21</div>
+            <div class="plan-breakdown" id="planBreakdown"><span class="pb-empty">Tap + to build your plan</span></div>
+            <div class="big" id="estWeek">£0</div>
             <small>estimated per week · final price confirmed when you book</small>
             <a href="#" class="plan-reset" onclick="resetPlan();return false;">Reset</a>
           </div>
@@ -652,10 +686,9 @@ footer .em{color:var(--sun);font-weight:900}
       <a href="#faq">FAQ</a>
       <a href="#contact">Book me</a>
     </div>
-    <p style="margin-bottom:14px">📧 <a href="mailto:lucassdogsandplants@gmail.com" class="em">lucassdogsandplants@gmail.com</a> &nbsp;·&nbsp; 💬 <a href="https://wa.me/447568403003" class="em" target="_blank" rel="noopener">Message me on WhatsApp</a></p>
+    <p style="margin-bottom:14px">📧 <a href="mailto:lucassdogsandplants@gmail.com" class="em">lucassdogsandplants@gmail.com</a></p>
     <p class="legal">
-      Local dog-walking &amp; plant-watering services in Clapham, SW4.
-      A casual, self-employed neighbourly service. All bookings arranged directly by email or WhatsApp.
+      Local dog walking, plant watering &amp; holiday home checks in Clapham, SW4. A casual, self-employed neighbourly service — all bookings start with the enquiry form above.
     </p>
   </div>
 </footer>
@@ -706,7 +739,7 @@ document.querySelectorAll('.nav-links a, footer .flinks a').forEach(function(a){
 
 /* price calculator */
 var PRICES={walk:8,sit:8,gard:5,holi:25};
-var qty={walks:1,sit:1,gard:1,holi:0};
+var qty={walks:0,sit:0,gard:0,holi:0};
 var walkDurLabel='30 min';
 function setDur(btn){
   document.querySelectorAll('#durToggle button').forEach(function(b){b.classList.remove('active');});
