@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Clapham Paws &amp; Plants</title>
+<meta name="description" content="Dog walking, pet feeding, plant watering and holiday home checks in Clapham SW4 — by Lucas, your friendly local neighbour. From £5, same-day replies.">
+<meta property="og:title" content="Clapham Paws &amp; Plants — dog walks, plants &amp; holiday checks">
+<meta property="og:description" content="Your actual neighbour, not an agency. Dog walks from £8, plant watering, and the Holiday Package — Clapham SW4.">
+<meta property="og:image" content="https://lucassdogsandplants-eng.github.io/PAWS-X-PLANTS/preview.jpg">
+<meta property="og:type" content="website">
 <style>
 :root{
   --sun:#ffb703;
@@ -382,7 +387,7 @@ footer .em{color:var(--sun);font-weight:900}
       <div class="hc-row">
         <div class="hc-ic g">💧</div>
         <div><div class="hc-t">Watering plants</div><div class="hc-s">Keep beds &amp; pots alive while away</div></div>
-        <div class="hc-price">from £8</div>
+        <div class="hc-price">from £5</div>
       </div>
       <div class="hc-row">
         <div class="hc-ic g">🏖️</div>
@@ -441,9 +446,9 @@ footer .em{color:var(--sun);font-weight:900}
           <li>Back-garden &amp; indoor houseplants — if you can leave access</li>
           <li>A quick photo so you know all's well</li>
         </ul>
-        <div class="svc-note" style="background:#eafaee;border-left-color:var(--leaf-deep)">💷 Price varies with the size of your garden and number of plants — from £8 per visit, confirmed at the free meet &amp; greet.</div>
+        <div class="svc-note" style="background:#eafaee;border-left-color:var(--leaf-deep)">💷 Price varies with the size of your garden and number of plants — from £5 per visit, confirmed at the free meet &amp; greet.</div>
         <div class="svc-foot">
-          <div class="svc-price">from £8<small>per visit</small></div>
+          <div class="svc-price">from £5<small>per visit</small></div>
           <button class="mini-btn" onclick="bookService('Plant watering')">Book this</button>
         </div>
       </div>
@@ -459,8 +464,9 @@ footer .em{color:var(--sun);font-weight:900}
           <li>Add a pet drop-in if needed</li>
           <li>Photo update after every visit</li>
         </ul>
+        <div class="svc-note" style="background:#eafaee;border-left-color:var(--leaf-deep)">🏷️ Going away a full week? Ask about a weekly rate — it works out cheaper than 7 × £12.</div>
         <div class="svc-foot">
-          <div class="svc-price">£12<small>per visit or week</small></div>
+          <div class="svc-price">£12<small>per visit</small></div>
           <button class="mini-btn" onclick="bookService('Holiday Package')">Book this</button>
         </div>
       </div>
@@ -487,7 +493,7 @@ footer .em{color:var(--sun);font-weight:900}
 <section id="faq">
   <div class="wrap">
     <span class="eyebrow">Good to know</span>
-    <h2 class="sec-title">Questions dog owners ask</h2>
+    <h2 class="sec-title">Questions people ask</h2>
     <p class="sec-sub">The honest answers to the things people wonder before they book.</p>
     <div class="faq-list">
       <div class="faq reveal">
@@ -508,7 +514,7 @@ footer .em{color:var(--sun);font-weight:900}
       </div>
         <div class="faq reveal">
         <button type="button" class="faq-q">Are your parents involved?</button>
-        <div class="faq-body"><p>Yes — one of them comes to every first meet &amp; greet, they know every booking I take, and they're always reachable. Flexible around your week — mornings, evenings or weekends.</p></div>
+        <div class="faq-body"><p>Yes — one of them comes to every first meet &amp; greet, they know every booking I take, and they're always reachable. You're always dealing with me — they're just in the loop.</p></div>
       </div>
       <div class="faq reveal">
         <button type="button" class="faq-q">Do you walk dogs off the lead?</button>
@@ -521,6 +527,10 @@ footer .em{color:var(--sun);font-weight:900}
       <div class="faq reveal">
         <button type="button" class="faq-q">Are you insured?</button>
         <div class="faq-body"><p>Professional dog-walker's insurance isn't available until you're 18, so I can't buy it yet. That's exactly why the checklist above exists, why every dog stays on the lead, and why I only take on dogs I can confidently handle.</p></div>
+      </div>
+      <div class="faq reveal">
+        <button type="button" class="faq-q">Are your prices fixed?</button>
+        <div class="faq-body"><p>The prices on this page are honest guides — you'll always get a clear, fixed price at the free meet &amp; greet before anything is booked, and it never changes after that. Booking more than one service, or several weeks together? Ask about a package rate — combining things always works out cheaper.</p></div>
       </div>
       <div class="faq reveal">
         <button type="button" class="faq-q">Are you around after the summer?</button>
@@ -555,7 +565,7 @@ footer .em{color:var(--sun);font-weight:900}
           <li>I walk to you from Abbeville Village — 30 minutes at most</li>
           <li>You always deal with me, the same face each time</li>
           <li>Honest local prices — pay after for one-offs, 50/50 for holiday bookings</li>
-          <li>Flexible around your week — mornings, afters or weekends</li>
+          <li>Flexible around your week — mornings, evenings or weekends</li>
           <li>Away for a while? I can do regular check-ups so your home looks lived-in</li>
         </ul>
         <p class="side-foot">Prefer to chat first? Just email and say hello — happy to answer any questions before you book.</p>
@@ -757,7 +767,7 @@ document.querySelectorAll('.nav-links a, footer .flinks a').forEach(function(a){
 });
 
 /* price calculator */
-var PRICES={walk:8,sit:8,gard:8,holi:12};
+var PRICES={walk:8,sit:8,gard:5,holi:12};
 var qty={walks:0,sit:0,gard:0,holi:0};
 var walkDurLabel='30 min';
 function setDur(btn){
