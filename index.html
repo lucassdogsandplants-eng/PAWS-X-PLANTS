@@ -194,6 +194,8 @@ section{padding:74px 0}
 .dur-toggle button.active{background:var(--leaf-deep);border-color:var(--leaf-deep);color:#fff;box-shadow:0 6px 14px rgba(18,122,37,.28)}
 .dur-toggle button small{display:block;font-weight:700;font-size:.72rem;opacity:.85}
 .calc .out{margin-top:20px;background:var(--cream);border-radius:16px;padding:20px;text-align:center;border:2px dashed var(--sun)}
+.plan-alert{background:#fff4e0;border:2px solid var(--sun-deep);border-radius:14px;padding:14px 18px;margin-bottom:18px;font-weight:900;font-size:1.02rem;line-height:1.45;color:var(--ink)}
+.plan-alert b{color:var(--sun-deep)}
 .out-label{font-weight:900;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sun-deep);margin-bottom:10px}
 .plan-breakdown{display:flex;flex-direction:column;gap:4px;font-size:.85rem;font-weight:700;color:var(--ink-soft);margin-bottom:10px}
 .plan-breakdown .pb-row{display:flex;justify-content:space-between;gap:12px}
@@ -322,7 +324,6 @@ footer .em{color:var(--sun);font-weight:900}
   .hero h1{font-size:2.5rem}
   .svc-grid,.steps,.rev-grid,.area-grid,.contact-card{grid-template-columns:1fr}
   .contact-left,.contact-right{padding:30px}
-  .calc-in-contact{order:-1}
 }
 @media print{
   header,.burger,.hero-actions,.mini-btn,.nav-cta{display:none}
@@ -574,55 +575,10 @@ footer .em{color:var(--sun);font-weight:900}
     <h2 class="sec-title">Book your Clapham neighbour</h2>
     <p class="sec-sub">I live right here in Clapham, so I walk round to you. I reply the same day, every day.</p>
     <div class="contact-card reveal">
-      <div class="contact-left calc-in-contact">
-        <div class="calc">
-          <h3>Send me an enquiry</h3>
-          <p style="color:var(--ink-soft);font-size:.9rem">Fill this in and it lands straight in my inbox — I reply the same day. Build a plan below and it attaches automatically.</p>
-        <!-- Formspree endpoint -->
-        <form class="booking-form" action="https://formspree.io/f/mnjeaevd" method="POST" onsubmit="attachPlan()">
-          <div class="ff-row">
-            <label for="ff-name">Your first name *</label>
-            <input type="text" id="ff-name" name="name" required placeholder="e.g. Sarah">
-          </div>
-          <div class="ff-row">
-            <label for="ff-email">Your email *</label>
-            <input type="email" id="ff-email" name="email" required placeholder="So I can reply to you">
-          </div>
-          <div class="ff-row">
-            <label for="ff-phone">Your phone number</label>
-            <input type="tel" id="ff-phone" name="phone" placeholder="So I can call or text if needed">
-          </div>
-          <div class="ff-row">
-            <label for="ff-street">Your street (name only) *</label>
-            <input type="text" id="ff-street" name="street" required placeholder="e.g. Narbonne Avenue">
-          </div>
-          <div class="ff-row">
-            <label>What are you interested in?</label>
-            <div class="ff-pills">
-              <label class="ff-pill"><input type="checkbox" name="interested[]" value="Dog walking"><span>🐕 Dog walking</span></label>
-              <label class="ff-pill"><input type="checkbox" name="interested[]" value="Dog drop-ins"><span>🦴 Dog drop-ins</span></label>
-              <label class="ff-pill"><input type="checkbox" name="interested[]" value="Plant watering"><span>💧 Plant watering</span></label>
-              <label class="ff-pill"><input type="checkbox" name="interested[]" value="Holiday Package"><span>🏖️ Holiday Package</span></label>
-              <label class="ff-pill"><input type="checkbox" name="interested[]" value="Something else"><span>💬 Something else</span></label>
-            </div>
-          </div>
-          <div class="ff-row">
-            <label for="ff-msg">Anything else I should know?</label>
-            <textarea id="ff-msg" name="message" rows="3" placeholder="Your dog's name, dates you're away, preferred days &amp; times..."></textarea>
-          </div>
-          <!-- Formspree helpers -->
-          <input type="hidden" name="_subject" value="New enquiry — Clapham Paws & Plants">
-          <input type="hidden" id="ff-plan" name="weekly_plan" value="">
-          <input type="text" name="_gotcha" style="display:none">
-          <button type="submit" class="ff-submit">Send my enquiry 🐾🐾</button>
-          <p class="ff-privacy">🔒 Street name only for now — I'll never ask for your house number until a booking is confirmed. Your details are only ever used to reply to you — never shared, never any marketing.</p>
-        </form>
-        </div>
-      </div>
       <div class="contact-right calc-in-contact">
         <div class="calc">
           <h3>Build your weekly plan</h3>
-          <p style="color:var(--ink-soft);font-size:.9rem">Tap + and − — your total updates as you go, then send it with your enquiry.</p>
+          <div class="plan-alert">⚠️ <b>Heads up:</b> whatever you select below goes straight into my inbox once you hit "Send my enquiry" — so build the plan that actually matches what you want, as it affects your price.</div>
 
           <!-- Dog walks -->
           <div class="plan-card">
@@ -669,6 +625,51 @@ footer .em{color:var(--sun);font-weight:900}
             <small style="display:block;margin-top:4px">✅ This is added to your enquiry automatically — no need to type it out</small>
             <a href="#" class="plan-reset" onclick="resetPlan();return false;">Reset</a>
           </div>
+        </div>
+      </div>
+      <div class="contact-left calc-in-contact">
+        <div class="calc">
+          <h3>Send me an enquiry</h3>
+          <p style="color:var(--ink-soft);font-size:.9rem">Fill this in and it lands straight in my inbox — I reply the same day. Build a plan below and it attaches automatically.</p>
+        <!-- Formspree endpoint -->
+        <form class="booking-form" action="https://formspree.io/f/mnjeaevd" method="POST" onsubmit="attachPlan()">
+          <div class="ff-row">
+            <label for="ff-name">Your first name *</label>
+            <input type="text" id="ff-name" name="name" required placeholder="e.g. Sarah">
+          </div>
+          <div class="ff-row">
+            <label for="ff-email">Your email *</label>
+            <input type="email" id="ff-email" name="email" required placeholder="So I can reply to you">
+          </div>
+          <div class="ff-row">
+            <label for="ff-phone">Your phone number</label>
+            <input type="tel" id="ff-phone" name="phone" placeholder="So I can call or text if needed">
+          </div>
+          <div class="ff-row">
+            <label for="ff-street">Your street (name only) *</label>
+            <input type="text" id="ff-street" name="street" required placeholder="e.g. Narbonne Avenue">
+          </div>
+          <div class="ff-row">
+            <label>What are you interested in?</label>
+            <div class="ff-pills">
+              <label class="ff-pill"><input type="checkbox" name="interested[]" value="Dog walking"><span>🐕 Dog walking</span></label>
+              <label class="ff-pill"><input type="checkbox" name="interested[]" value="Dog drop-ins"><span>🦴 Dog drop-ins</span></label>
+              <label class="ff-pill"><input type="checkbox" name="interested[]" value="Plant watering"><span>💧 Plant watering</span></label>
+              <label class="ff-pill"><input type="checkbox" name="interested[]" value="Holiday Package"><span>🏖️ Holiday Package</span></label>
+              <label class="ff-pill"><input type="checkbox" name="interested[]" value="Something else"><span>💬 Something else</span></label>
+            </div>
+          </div>
+          <div class="ff-row">
+            <label for="ff-msg">Anything else I should know?</label>
+            <textarea id="ff-msg" name="message" rows="3" placeholder="Your dog's name, dates you're away, preferred days &amp; times..."></textarea>
+          </div>
+          <!-- Formspree helpers -->
+          <input type="hidden" name="_subject" value="New enquiry — Clapham Paws & Plants">
+          <input type="hidden" id="ff-plan" name="weekly_plan" value="">
+          <input type="text" name="_gotcha" style="display:none">
+          <button type="submit" class="ff-submit">Send my enquiry 🐾🐾</button>
+          <p class="ff-privacy">🔒 Street name only for now — I'll never ask for your house number until a booking is confirmed. Your details are only ever used to reply to you — never shared, never any marketing.</p>
+        </form>
         </div>
       </div>
     </div>
