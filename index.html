@@ -219,9 +219,9 @@ section{padding:74px 0}
 .faq-q{width:100%;cursor:pointer;text-align:left;background:none;border:none;font-family:inherit;padding:18px 22px;font-weight:900;color:var(--ink);font-size:1.05rem;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .faq-q::after{content:"+";color:var(--leaf-deep);font-size:1.5rem;font-weight:900;transition:transform .5s cubic-bezier(.22,.61,.36,1);flex-shrink:0}
 .faq.open .faq-q::after{transform:rotate(45deg)}
-.faq-body{max-height:0;overflow:hidden;opacity:0;transition:max-height .75s cubic-bezier(.22,.61,.36,1),opacity .7s ease .1s}
-.faq.open .faq-body{max-height:200px;opacity:1}
-.faq-body p{transform:translateY(-8px);transition:transform .75s cubic-bezier(.22,.61,.36,1)}
+.faq-body{display:grid;grid-template-rows:0fr;overflow:hidden;opacity:0;transition:grid-template-rows .75s cubic-bezier(.22,.61,.36,1),opacity .7s ease .1s}
+.faq.open .faq-body{grid-template-rows:1fr;opacity:1}
+.faq-body p{min-height:0;overflow:hidden;transform:translateY(-8px);transition:transform .75s cubic-bezier(.22,.61,.36,1)}
 .faq.open .faq-body p{transform:none}
 .faq p{padding:0 22px 20px;color:var(--ink-soft);margin:0;line-height:1.6}
 
@@ -322,6 +322,7 @@ footer .em{color:var(--sun);font-weight:900}
   .hero h1{font-size:2.5rem}
   .svc-grid,.steps,.rev-grid,.area-grid,.contact-card{grid-template-columns:1fr}
   .contact-left,.contact-right{padding:30px}
+  .calc-in-contact{order:-1}
 }
 @media print{
   header,.burger,.hero-actions,.mini-btn,.nav-cta{display:none}
@@ -665,6 +666,7 @@ footer .em{color:var(--sun);font-weight:900}
             <div class="plan-breakdown" id="planBreakdown"><span class="pb-empty">Tap + to build your plan</span></div>
             <div class="big" id="estWeek">£0</div>
             <small>estimated per week · final price confirmed when you book</small>
+            <small style="display:block;margin-top:4px">✅ This is added to your enquiry automatically — no need to type it out</small>
             <a href="#" class="plan-reset" onclick="resetPlan();return false;">Reset</a>
           </div>
         </div>
